@@ -49,7 +49,7 @@ class OrbitCalculator:
                 current_pass = {"rise_time": t.utc_datetime()}
             elif event == 1:
                 current_pass["culmination_time"] = t.utc_datetime()
-                current_pass["max_elevation_deg"] = satellite.at(t).altaz(observer)[0].degrees
+                current_pass["max_elevation_deg"] = satellite.at(t).altaz(observerLoc)[0].degrees
             elif event == 2:
                 current_pass["set_time"] = t.utc_datetime()
                 if current_pass:
