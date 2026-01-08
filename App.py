@@ -46,3 +46,26 @@ def predict_passes(req: PassesRequest):
         raise HTTPException(status_code=400, detail=str(exc))
     passes = calc.predict_passes(sat, req.user_lat, req.user_lng)
     return {"passes": serialize_passes(passes)}
+
+if __name__ == "__main__":
+
+    # TLE for ISS test
+    name = "ISS (ZARYA)"
+    l1 = "1 25544U 98067A   24004.88295602  .00016717  00000-0  30143-3 0  9990"
+    l2 = "2 25544  51.6416 253.3087 0005528  71.5033 288.5913 15.49815774432921"
+    calc = OrbitCalculator()
+    sat = calc.parse_tle(name, l1, l2)
+
+    
+    user_lat = 40.7128
+    user_lng = 74.0060
+
+    passes = calc.predict_passes(sat, user_lat, user_lng)
+
+    for p in passes:
+        print(
+            "Rise:", p["rise_time"],
+            "Max:", p["culmination_time"],
+            "Set:", p["set_time"],
+            "Max El:", round(p["max_elevation_deg"], 1)
+        )
