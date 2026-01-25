@@ -135,7 +135,8 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+.env.*
+!.env.example
 .envrc
 .venv
 env/
@@ -194,6 +195,32 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
+# Node / Next.js
+node_modules/
+.next/
+out/
+.vercel/
+.turbo/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Skyfield ephemeris
+de421.bsp
+
+# Local data
+data/
+*.db
+*.sqlite3
+
+# CDK (if still present)
+infra/node_modules/
+infra/cdk.out/
+
 # Cursor
 #  Cursor is an AI-powered code editor. `.cursorignore` specifies files/directories to
 #  exclude from AI features like autocomplete and code analysis. Recommended for sensitive data
@@ -205,3 +232,5 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+.env
+.env.example
